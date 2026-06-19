@@ -1,0 +1,38 @@
+import { Button } from '@repo/ui/components/ui/button'
+
+{{#if (eq type "host")}}
+// HOST APP — lazy load remote MFEs here
+// const AuthApp = lazy(() => import('auth/App'))
+// const DashboardApp = lazy(() => import('dashboard/App'))
+
+function App() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <header className="border-b border-border px-6 py-4">
+        <h1 className="text-2xl font-bold">{{name}} — Shell</h1>
+      </header>
+      <main className="p-6">
+        <p className="text-muted-foreground mb-4">
+          This is the host shell. Add remote MFEs in vite.config.ts and import them here.
+        </p>
+        <Button>Get Started</Button>
+      </main>
+    </div>
+  )
+}
+{{else}}
+// REMOTE MFE — this component is exposed via Module Federation
+function App() {
+  return (
+    <div className="p-6 bg-background text-foreground">
+      <h2 className="text-xl font-semibold mb-2">{{name}} MFE</h2>
+      <p className="text-muted-foreground mb-4">
+        This micro-frontend is exposed as <code className="font-mono text-sm">{{name}}/{{exposes}}</code>
+      </p>
+      <Button>Action</Button>
+    </div>
+  )
+}
+{{/if}}
+
+export default App

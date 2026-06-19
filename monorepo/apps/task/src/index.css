@@ -1,0 +1,2 @@
+/* Import shared shadcn globals (CSS variables for colours, radius, etc.) */
+@import "@repo/ui/styles";
