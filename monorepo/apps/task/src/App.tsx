@@ -1,16 +1,19 @@
-import { Button } from '@repo/ui/components/ui/button'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { TaskListPage } from './pages/TaskListPage';
+import { CreateTaskPage } from './pages/CreateTaskPage';
+import { TaskDetailPage } from './pages/TaskDetailPage';
+import { EditTaskPage } from './pages/EditTaskPage';
 
-// REMOTE MFE — this component is exposed via Module Federation
 function App() {
   return (
-    <div className="p-6 bg-background text-foreground">
-      <h2 className="text-xl font-semibold mb-2">task MFE</h2>
-      <p className="text-muted-foreground mb-4">
-        This micro-frontend is exposed as <code className="font-mono text-sm">task/App</code>
-      </p>
-      <Button>Action</Button>
-    </div>
-  )
+    <Routes>
+      <Route index element={<TaskListPage />} />
+      <Route path="new" element={<CreateTaskPage />} />
+      <Route path=":taskId" element={<TaskDetailPage />} />
+      <Route path=":taskId/edit" element={<EditTaskPage />} />
+      <Route path="*" element={<Navigate to="/tasks" replace />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

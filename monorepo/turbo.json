@@ -22,11 +22,5 @@
       "cache": false,
       "persistent": true
     }
-  },
-  "generators": [
-    {
-      "name": "mfe-app",
-      "config": "turbo/generators/config.ts"
-    }
-  ]
+  }
 }

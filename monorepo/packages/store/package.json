@@ -3,7 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    ".": "./src/index.ts",
+    "./authStore": "./src/authStore.ts",
+    "./auth.types": "./src/auth.types.ts",
+    "./rbac": "./src/rbac.ts",
     "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "typescript": "5.9.2"
   },
   "peerDependencies": {
     "react": ">=18"

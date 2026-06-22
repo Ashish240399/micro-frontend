@@ -1,16 +1,19 @@
-import { Button } from '@repo/ui/components/ui/button'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { UserListPage } from './pages/UserListPage';
+import { CreateUserPage } from './pages/CreateUserPage';
+import { UserDetailPage } from './pages/UserDetailPage';
+import { EditUserPage } from './pages/EditUserPage';
 
-// REMOTE MFE — this component is exposed via Module Federation
 function App() {
   return (
-    <div className="p-6 bg-background text-foreground">
-      <h2 className="text-xl font-semibold mb-2">user MFE</h2>
-      <p className="text-muted-foreground mb-4">
-        This micro-frontend is exposed as <code className="font-mono text-sm">user/App</code>
-      </p>
-      <Button>Action</Button>
-    </div>
-  )
+    <Routes>
+      <Route index element={<UserListPage />} />
+      <Route path="new" element={<CreateUserPage />} />
+      <Route path=":userId" element={<UserDetailPage />} />
+      <Route path=":userId/edit" element={<EditUserPage />} />
+      <Route path="*" element={<Navigate to="/users" replace />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
